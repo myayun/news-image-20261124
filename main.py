@@ -1,28 +1,36 @@
 #!/usr/bin/env python3
-"""news-image-20261124 entry: write the front page for Tuesday 24 November 2026
-to /output/entry.png.
+"""news-image-20261124: print Tuesday 24 November 2026's front page.
 
-The image is produced by build_image_v1.py (Pillow, deterministic) from 30
-verified 24-Nov stories: Nvidia reinstating Jensen Huang as CEO (+31%, best
-US market day since April 2025) as the lead, the WSJ inside story of
-Ukraine's 2,400 km Libya strike, NATO's AWACS deployment to Poland and the
-EU's 22nd sanctions package as heroes, plus 6 medium stories, 20 briefs, a
-region-count bar, a DATE CHECK box and a markets strip (Monday's close,
-labelled as such). Four illustrations were generated for this day; no
-leaderboard images were used.
+The page is drawn ahead of time by build_image_v1.py (Pillow, deterministic)
+and stored as assets/entry.png: 30 verified stories from 24 November 2026.
+Nvidia brings Jensen Huang back as chief executive, Ukraine's 2,400 km
+strike off Libya gets the Wall Street Journal's inside story, NATO sends
+AWACS aircraft to Poland, and the EU proposes its 22nd sanctions package.
+A region bar, a DATE CHECK box and a markets strip (Monday's close, labelled
+as such) complete the page.
 
-This entrypoint is stdlib-only: it copies the pre-built assets/entry.png
-to /output/entry.png, byte for byte.
+This program only places that finished page at /output/entry.png. It reads
+nothing else, reaches no network, and writes the same bytes every run.
 """
 import os
 import shutil
+from pathlib import Path
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(HERE, "assets", "entry.png")
+HERE = Path(__file__).resolve().parent
+SOURCE = HERE / "assets" / "entry.png"
+DEST_DIR = Path(os.environ.get("OUTPUT_DIR", "/output"))
 
-OUT_DIR = os.environ.get("OUTPUT_DIR", "/output")
-OUT = os.path.join(OUT_DIR, "entry.png")
 
-os.makedirs(OUT_DIR, exist_ok=True)
-shutil.copyfile(SRC, OUT)
-print(f"wrote {OUT} ({os.path.getsize(OUT)} bytes)")
+def main():
+    if not SOURCE.is_file():
+        print(f"missing {SOURCE}")
+        return 1
+    DEST_DIR.mkdir(parents=True, exist_ok=True)
+    target = DEST_DIR / "entry.png"
+    shutil.copyfile(SOURCE, target)
+    print(f"wrote {target} ({target.stat().st_size} bytes)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
