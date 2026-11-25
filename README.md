@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/news-image-20261124/myayun/news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
 [![reward](https://make.fun/badge/news-image-20261124/myayun/news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
 
-Sum up Tuesday 24 November 2026's world news in one image: a newspaper front page with 30 stories. The lead is Nvidia reinstating Jensen Huang as chief executive after a Trump–Vance pressure campaign, with shares up 31% and the best US market day since April 2025. The heroes are the Wall Street Journal's inside story of Ukraine's 2,400 km sea-drone strike off Libya, NATO sending AWACS aircraft to Poland, and the EU proposing its 22nd sanctions package against Russia.
+Sum up Tuesday 24 November 2026's world news in one image: a clean 12-story front page. The lead is Nvidia reinstating Jensen Huang as chief executive after a Trump–Vance pressure campaign, with shares up 31% and the best US market day since April 2025. The heroes are the Wall Street Journal's inside story of Ukraine's 2,400 km sea-drone strike off Libya, NATO sending AWACS aircraft to Poland, and the EU proposing its 22nd sanctions package against Russia.
 
 ## Run it
 
@@ -16,7 +16,7 @@ The program copies `assets/entry.png` to `/output/entry.png` and prints its size
 
 ## How the image is built
 
-The front page is drawn with Pillow by a deterministic builder (kept in the project history), in a new layout built from scratch for this day: a full-width lead band with the chip illustration on the left and the headline, deck and three market numbers on the right; three heroes across in one row; six medium stories in a single row; twenty briefs in three columns; a region-count bar; a DATE CHECK box listing the 23 November stories that are not on this page as news; and a markets strip. Every story was verified against a primary outlet (CNN, Wall Street Journal, AP, Reuters, BBC, FIFA) before it went in. The four illustrations were generated for this day; no leaderboard images were used. The submitted image is 496,443 bytes, 1024×1024, sha256 `80c35e73b85eb7f1fb0199574fd2ec231aaaa1d0e37768eaa9365962dd320748`, deterministic across runs.
+The front page is drawn with Pillow by a deterministic builder (build_image_v2.py), in a clean layout built from scratch for this day: a masthead naming Tuesday 24 November 2026, a large lead panel with the chip illustration, the headline, the deck and three market numbers, three hero text cards in a row, eight briefs from around the world, and a markets strip. Every story was verified against a primary outlet (CNN, Wall Street Journal, AP, Reuters, FIFA) before it went in. The illustration was generated for this day; no leaderboard images were used. The submitted image is 291,351 bytes, 1024×1024, sha256 `29d18fed3225475d40298d932cb826a69caed17013b3bc1c0244b22b7269ad39`, deterministic across runs.
 
 ## Honesty notes
 
